@@ -28,13 +28,20 @@ public class InRangeAttacker : MonoBehaviour
         {
             return;
         }
-        for (int i = 0; i < size; i++)
+
+        var target = Utilitity.ClosestToPoint(transform.position, colliders);
+        if (target.TryGetComponent(out IDamageable damageable))
         {
-            if (TryGetComponent(out IDamageable damageable))
+            damageable.RegisterDamage(damage);
+        }
+        //to-do: implement for more targets
+        /*for (int i = 0; i < size; i++)
+        {
+            if (colliders[i].TryGetComponent(out IDamageable damageable))
             {
                 damageable.RegisterDamage(damage);
             }
-        }
+        }*/
         readyToAttack = false;
         onAttack.Invoke();
     }

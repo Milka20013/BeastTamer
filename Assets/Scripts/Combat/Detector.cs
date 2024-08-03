@@ -23,7 +23,8 @@ public class Detector : MonoBehaviour
     {
         for (; ; )
         {
-            Collider2D[] colliders = new Collider2D[1];
+            //hardcoded 100
+            Collider2D[] colliders = new Collider2D[100];
 
             int size = Physics2D.OverlapCircleNonAlloc(transform.position, detectionRadius, colliders, targetLayer);
             if (size == 0)
@@ -32,7 +33,7 @@ public class Detector : MonoBehaviour
             }
             else
             {
-                onTargetDetected.Invoke(colliders[0].transform);
+                onTargetDetected.Invoke(Utilitity.ClosestToPoint(transform.position, colliders).transform);
             }
             yield return new WaitForSeconds(_detectionDelay);
         }
