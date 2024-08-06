@@ -16,12 +16,17 @@ public class Detector : MonoBehaviour
     {
         stats = GetComponent<BasicStats>();
         stats.onValueChanged.AddListener(OnStatChanged);
-        OnStatChanged();
-        _detectionDelay = 1 / detectionRatePerSecond;
     }
 
     private void Start()
     {
+        Init();
+    }
+
+    protected virtual void Init()
+    {
+        OnStatChanged();
+        _detectionDelay = 1 / detectionRatePerSecond;
         StartCoroutine(DetectTarget());
     }
     IEnumerator DetectTarget()
@@ -34,14 +39,19 @@ public class Detector : MonoBehaviour
             int size = Physics2D.OverlapCircleNonAlloc(transform.position, detectionRadius, colliders, targetLayer);
             if (size == 0)
             {
-                onTargetDetected.Invoke(null);
+                OnTargetDetected(null);
             }
             else
             {
-                onTargetDetected.Invoke(Utilitity.ClosestToPoint(transform.position, colliders).transform);
+                OnTargetDetected(Utilitity.ClosestToPoint(transform.position, colliders).transform);
             }
             yield return new WaitForSeconds(_detectionDelay);
         }
+    }
+
+    public virtual void OnTargetDetected(Transform target)
+    {
+        onTargetDetected.Invoke(target);
     }
 
     public void OnStatChanged()

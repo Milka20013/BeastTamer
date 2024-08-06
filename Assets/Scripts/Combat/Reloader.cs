@@ -14,6 +14,10 @@ public class Reloader : MonoBehaviour
     {
         stats = GetComponent<BasicStats>();
         stats.onValueChanged.AddListener(OnStatChange);
+
+    }
+    private void Start()
+    {
         OnStatChange();
         _attackDelay = 1 / attackSpeed;
     }

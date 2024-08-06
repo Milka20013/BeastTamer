@@ -15,6 +15,10 @@ public class SimpleFollowTarget : MonoBehaviour
     {
         stats = GetComponent<BasicStats>();
         stats.onValueChanged.AddListener(OnStatChanged);
+    }
+
+    private void Start()
+    {
         OnStatChanged();
     }
     void Update()

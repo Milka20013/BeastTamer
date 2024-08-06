@@ -12,4 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f2d3402523ffef409051070b311e6bb, type: 3}
   m_Name: Enemy1
   m_EditorClassIdentifier: 
-  enemyName: 
+  enemyName: Hexa
+  prefab: {fileID: 0}
+  attributes:
+  - attribute: {fileID: 11400000, guid: fa5a7cf257a502d4e9ac9f3f5de3e7d7, type: 2}
+    value: 5
+  - attribute: {fileID: 11400000, guid: 5229e0e21611a3f488de3556f14f1ac9, type: 2}
+    value: 1
+  - attribute: {fileID: 11400000, guid: 43a46ac4403a04e4cb6d895147888156, type: 2}
+    value: 1
+  - attribute: {fileID: 11400000, guid: ef0d0fd3f27341b4db53fcb2d8641043, type: 2}
+    value: 3
+  - attribute: {fileID: 11400000, guid: a552d7469aadd464786bf3433cfb1c20, type: 2}
+    value: 2
+  - attribute: {fileID: 11400000, guid: 893b7e23953052a4e90c45f5762ec231, type: 2}
+    value: 5

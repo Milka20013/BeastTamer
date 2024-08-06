@@ -12,14 +12,14 @@ GameObject:
   - component: {fileID: 7048598238694358787}
   - component: {fileID: 8702306111721702308}
   - component: {fileID: 7558218580397028049}
-  - component: {fileID: 2170715000859463532}
+  - component: {fileID: -2968316777936379942}
   - component: {fileID: 3656480834024518074}
-  - component: {fileID: 8360215679000600697}
   - component: {fileID: 7019801721044022799}
   - component: {fileID: 6324522110002068848}
   - component: {fileID: -1851064427253839429}
-  m_Layer: 7
-  m_Name: Enemy
+  - component: {fileID: -1707411729718412826}
+  m_Layer: 8
+  m_Name: Troop1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -164,7 +164,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.8828125}
   m_EdgeRadius: 0
---- !u!114 &2170715000859463532
+--- !u!114 &-2968316777936379942
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -173,10 +173,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 2459247782858418891}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d80c2da618902149a8e657844527d46, type: 3}
+  m_Script: {fileID: 11500000, guid: f009e5baf22c7114fa0e55fc60817fdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blueprint: {fileID: 11400000, guid: 4281c67d3921947459f7512045b75a56, type: 2}
+  attributeContainer: {fileID: 11400000, guid: 74065ff1578f60b4fb163c4546efe451, type: 2}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  detectionRatePerSecond: 30
+  onTargetDetected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6324522110002068848}
+        m_TargetAssemblyTypeName: SimpleFollowTarget, Assembly-CSharp
+        m_MethodName: OnTargetDetected
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3656480834024518074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,38 +224,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8360215679000600697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2459247782858418891}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d493e9d6b6b3a3545b1a70398ea83ec0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attributeContainer: {fileID: 11400000, guid: 74065ff1578f60b4fb163c4546efe451, type: 2}
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  detectionRatePerSecond: 30
-  onTargetDetected:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6324522110002068848}
-        m_TargetAssemblyTypeName: SimpleFollowTarget, Assembly-CSharp
-        m_MethodName: OnTargetDetected
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &7019801721044022799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,7 +239,7 @@ MonoBehaviour:
   attributeContainer: {fileID: 11400000, guid: 74065ff1578f60b4fb163c4546efe451, type: 2}
   targetLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
   maxNumberOfTargets: 1
   onAttack:
     m_PersistentCalls:
@@ -285,7 +272,7 @@ MonoBehaviour:
   onStopped:
     m_PersistentCalls:
       m_Calls: []
-  stoppingDistance: 2.5
+  stoppingDistance: 2
 --- !u!114 &-1851064427253839429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,3 +288,17 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-1707411729718412826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2459247782858418891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3818f60bdd4be1641a83f00b88c19a24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  troopBlueprint: {fileID: 11400000, guid: 8b8fe31c5f4a043429085a8fee0aa1bf, type: 2}

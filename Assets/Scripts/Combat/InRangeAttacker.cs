@@ -17,6 +17,10 @@ public class InRangeAttacker : MonoBehaviour
     {
         stats = GetComponent<BasicStats>();
         stats.onValueChanged.AddListener(OnStatChanged);
+    }
+
+    private void Start()
+    {
         OnStatChanged();
     }
     public void OnReloaded()
