@@ -3,13 +3,18 @@ using UnityEngine.Events;
 
 public class Reloader : MonoBehaviour
 {
+    [SerializeField] private AttributeContainer attributeContainer;
     public UnityEvent onReady;
-    [SerializeField] private float attackSpeed;
+    private BasicStats stats;
+    private float attackSpeed;
     private float _attackDelay;
     private bool isReady = false;
 
     private void Awake()
     {
+        stats = GetComponent<BasicStats>();
+        stats.onValueChanged.AddListener(OnStatChange);
+        OnStatChange();
         _attackDelay = 1 / attackSpeed;
     }
     private void Update()
@@ -30,5 +35,10 @@ public class Reloader : MonoBehaviour
     {
         _attackDelay = 1 / attackSpeed;
         isReady = false;
+    }
+
+    public void OnStatChange()
+    {
+        stats.TryGetAttributeValue(attributeContainer.attackSpeed, out attackSpeed);
     }
 }

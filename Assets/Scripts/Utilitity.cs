@@ -3,23 +3,39 @@ using UnityEngine;
 
 public static class Utilitity
 {
-    public static Transform ClosestToPoint(Vector3 point, Transform[] transforms)
+    public static Transform ClosestToPoint(Vector3 point, Transform[] objects)
     {
-        return transforms[ClosestsIndexToPoint(point, transforms)];
+        if (objects == null || objects.Length == 0)
+        {
+            return null;
+        }
+        return objects[ClosestsIndexToPoint(point, objects)];
     }
 
     public static GameObject ClosestToPoint(Vector3 point, GameObject[] objects)
     {
-        return objects[ClosestsIndexToPoint(point, objects.Select(x => x.transform).ToArray())];
+        if (objects == null || objects.Length == 0)
+        {
+            return null;
+        }
+        return objects[ClosestsIndexToPoint(point, objects.Where(x => x != null).Select(x => x.transform).ToArray())];
     }
 
     public static Collider2D ClosestToPoint(Vector3 point, Collider2D[] objects)
     {
-        return objects[ClosestsIndexToPoint(point, objects.Select(x => x.transform).ToArray())];
+        if (objects == null || objects.Length == 0)
+        {
+            return null;
+        }
+        return objects[ClosestsIndexToPoint(point, objects.Where(x => x != null).Select(x => x.transform).ToArray())];
     }
     public static Collider ClosestToPoint(Vector3 point, Collider[] objects)
     {
-        return objects[ClosestsIndexToPoint(point, objects.Select(x => x.transform).ToArray())];
+        if (objects == null || objects.Length == 0)
+        {
+            return null;
+        }
+        return objects[ClosestsIndexToPoint(point, objects.Where(x => x != null).Select(x => x.transform).ToArray())];
     }
     private static int ClosestsIndexToPoint(Vector3 point, Transform[] points)
     {

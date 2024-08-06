@@ -4,14 +4,19 @@ using UnityEngine.Events;
 
 public class Detector : MonoBehaviour
 {
+    [SerializeField] private AttributeContainer attributeContainer;
     [SerializeField] private LayerMask targetLayer;
     [SerializeField] private float detectionRatePerSecond;
     private float _detectionDelay;
-    [SerializeField] private float detectionRadius;
+    private BasicStats stats;
+    private float detectionRadius;
     public UnityEvent<Transform> onTargetDetected;
 
     private void Awake()
     {
+        stats = GetComponent<BasicStats>();
+        stats.onValueChanged.AddListener(OnStatChanged);
+        OnStatChanged();
         _detectionDelay = 1 / detectionRatePerSecond;
     }
 
@@ -39,8 +44,8 @@ public class Detector : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected()
+    public void OnStatChanged()
     {
-        Gizmos.DrawWireSphere(transform.position, detectionRadius);
+        stats.TryGetAttributeValue(attributeContainer.detectionRadius, out detectionRadius);
     }
 }

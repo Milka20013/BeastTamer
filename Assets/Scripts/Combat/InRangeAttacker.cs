@@ -3,13 +3,22 @@ using UnityEngine.Events;
 
 public class InRangeAttacker : MonoBehaviour
 {
-    public UnityEvent onAttack;
-    [SerializeField] private float attackRange;
+    [SerializeField] private AttributeContainer attributeContainer;
+    private BasicStats stats;
     [SerializeField] private LayerMask targetLayer;
+    private float attackRange;
     [SerializeField] private int maxNumberOfTargets;
-    [SerializeField] private float damage;
+    private float damage;
     private bool readyToAttack = false;
+    public UnityEvent onAttack;
 
+
+    private void Awake()
+    {
+        stats = GetComponent<BasicStats>();
+        stats.onValueChanged.AddListener(OnStatChanged);
+        OnStatChanged();
+    }
     public void OnReloaded()
     {
         readyToAttack = true;
@@ -46,9 +55,9 @@ public class InRangeAttacker : MonoBehaviour
         onAttack.Invoke();
     }
 
-    private void OnDrawGizmosSelected()
+    public void OnStatChanged()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
+        stats.TryGetAttributeValue(attributeContainer.damage, out damage);
+        stats.TryGetAttributeValue(attributeContainer.attackRange, out attackRange);
     }
 }

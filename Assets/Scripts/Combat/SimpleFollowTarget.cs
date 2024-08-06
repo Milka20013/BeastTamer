@@ -3,11 +3,20 @@ using UnityEngine.Events;
 
 public class SimpleFollowTarget : MonoBehaviour
 {
+    [SerializeField] private AttributeContainer attributeContainer;
+    private BasicStats stats;
     public UnityEvent onStopped;
     [SerializeField] private float stoppingDistance;
-    [SerializeField] private float speed;
+    private float movementSpeed;
     private Transform target;
     private bool isStopped = false;
+
+    private void Awake()
+    {
+        stats = GetComponent<BasicStats>();
+        stats.onValueChanged.AddListener(OnStatChanged);
+        OnStatChanged();
+    }
     void Update()
     {
         if (target == null)
@@ -24,7 +33,7 @@ public class SimpleFollowTarget : MonoBehaviour
             return;
         }
         Vector3 direction = target.position - transform.position;
-        transform.Translate(speed * Time.deltaTime * direction.normalized);
+        transform.Translate(movementSpeed * Time.deltaTime * direction.normalized);
     }
 
     public void OnTargetDetected(Transform target)
@@ -32,9 +41,9 @@ public class SimpleFollowTarget : MonoBehaviour
         this.target = target;
     }
 
-    private void OnDrawGizmosSelected()
+    public void OnStatChanged()
     {
-        Gizmos.color = Color.gray;
-        Gizmos.DrawWireSphere(transform.position, stoppingDistance);
+        stats.TryGetAttributeValue(attributeContainer.movementSpeed, out movementSpeed);
+        //stats.TryGetAttributeValue(attributeContainer.stoppingDistance, out stoppingDistance);
     }
 }
