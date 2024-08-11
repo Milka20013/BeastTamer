@@ -15,7 +15,7 @@ public class TroopSpawner : MonoBehaviour
     }
     public void SpawnTroop(TroopBlueprint troopBp)
     {
-        var troopObj = Instantiate(troopBp.troopPrefab, transform.position, Quaternion.identity);
+        var troopObj = Instantiate(troopBp.troopPrefab, transform.position, Quaternion.identity, transform);
         troopObj.GetComponent<Troop>().player = player;
     }
 }
