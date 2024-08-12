@@ -8,7 +8,7 @@ public class InRangeAttacker : MonoBehaviour
     private BasicStats stats;
     [SerializeField] private LayerMask targetLayer;
     private float attackRange;
-    [SerializeField] private int maxNumberOfTargets;
+    [SerializeField] private int maxNumberOfTargets = 10;
     private float damage;
     private bool readyToAttack = false;
     private Collider2D target;

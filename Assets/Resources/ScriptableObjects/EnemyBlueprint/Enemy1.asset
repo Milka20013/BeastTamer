@@ -16,7 +16,7 @@ MonoBehaviour:
   prefab: {fileID: 0}
   attributes:
   - attribute: {fileID: 11400000, guid: fa5a7cf257a502d4e9ac9f3f5de3e7d7, type: 2}
-    value: 1
+    value: 10
   - attribute: {fileID: 11400000, guid: 5229e0e21611a3f488de3556f14f1ac9, type: 2}
     value: 1
   - attribute: {fileID: 11400000, guid: 43a46ac4403a04e4cb6d895147888156, type: 2}

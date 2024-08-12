@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TakeDamage : MonoBehaviour, IDamageable
+public class TakeDamage : MonoBehaviour, IDamageable, IHealthHandler
 {
     [SerializeField] private AttributeContainer attributeContainer;
     private BasicStats stats;
@@ -13,12 +13,9 @@ public class TakeDamage : MonoBehaviour, IDamageable
     private void Awake()
     {
         stats = GetComponent<BasicStats>();
-    }
-
-    private void Start()
-    {
         healthSystem = new(stats, attributeContainer.health);
     }
+
     public bool IsDead()
     {
         return healthSystem.CurrentHealth <= 0f;
@@ -33,5 +30,15 @@ public class TakeDamage : MonoBehaviour, IDamageable
             onDeath.Invoke(attacker);
             isDead = true;
         }
+    }
+
+    public float GetInitialHealth()
+    {
+        return healthSystem.InitialHealth;
+    }
+
+    public float GetCurrentHealth()
+    {
+        return healthSystem.CurrentHealth;
     }
 }

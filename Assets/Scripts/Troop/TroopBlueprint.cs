@@ -20,9 +20,9 @@ public class TroopBlueprint : ScriptableObject
         {
             for (int j = 0; j < attributes.Count; j++)
             {
-                if (overrides[i].attribute == attributes[i].attribute)
+                if (overrides[i].attribute == attributes[j].attribute)
                 {
-                    attributes[i] = new(overrides[i]);
+                    attributes[j] = new(overrides[i]);
                 }
             }
         }

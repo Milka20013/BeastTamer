@@ -13,6 +13,7 @@ public class HealthSystem
         this.healthAttr = healthAttr;
         stats.onValueChanged.AddListener(OnInitialHealthChanged);
         OnInitialHealthChanged();
+        CurrentHealth = InitialHealth;
     }
 
     private void OnInitialHealthChanged()
