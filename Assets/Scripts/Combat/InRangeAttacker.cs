@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,6 +11,8 @@ public class InRangeAttacker : MonoBehaviour
     [SerializeField] private int maxNumberOfTargets;
     private float damage;
     private bool readyToAttack = false;
+    private Collider2D target;
+    [SerializeField] private float detectionPerSecond = 30f;
     public UnityEvent onAttack;
 
 
@@ -22,6 +25,7 @@ public class InRangeAttacker : MonoBehaviour
     private void Start()
     {
         OnStatChanged();
+        StartCoroutine(DetectTargetInRange());
     }
     public void OnReloaded()
     {
@@ -31,21 +35,32 @@ public class InRangeAttacker : MonoBehaviour
 
     public void TryAttack()
     {
-        if (!readyToAttack)
+        if (!readyToAttack || target == null)
         {
             return;
         }
-        Collider2D[] colliders = new Collider2D[maxNumberOfTargets];
-        int size = Physics2D.OverlapCircleNonAlloc(transform.position, attackRange, colliders, targetLayer);
-        if (size == 0)
-        {
-            return;
-        }
+        Attack();
+    }
 
-        var target = Utilitity.ClosestToPoint(transform.position, colliders);
+    IEnumerator DetectTargetInRange()
+    {
+        for (; ; )
+        {
+            Collider2D[] colliders = new Collider2D[maxNumberOfTargets];
+            int size = Physics2D.OverlapCircleNonAlloc(transform.position, attackRange, colliders, targetLayer);
+            if (size != 0)
+            {
+                target = Utilitity.ClosestToPoint(transform.position, colliders);
+                TryAttack();
+            }
+            yield return new WaitForSeconds(1 / detectionPerSecond);
+        }
+    }
+    public void Attack()
+    {
         if (target.TryGetComponent(out IDamageable damageable))
         {
-            damageable.RegisterDamage(damage);
+            damageable.RegisterDamage(damage, gameObject);
         }
         //to-do: implement for more targets
         /*for (int i = 0; i < size; i++)

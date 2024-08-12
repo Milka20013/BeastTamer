@@ -16,8 +16,8 @@ GameObject:
   - component: {fileID: 3656480834024518074}
   - component: {fileID: 7019801721044022799}
   - component: {fileID: 6324522110002068848}
-  - component: {fileID: -1851064427253839429}
   - component: {fileID: -1707411729718412826}
+  - component: {fileID: 601313972919803799}
   m_Layer: 8
   m_Name: Troop1
   m_TagString: Untagged
@@ -214,7 +214,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7019801721044022799}
         m_TargetAssemblyTypeName: InRangeAttacker, Assembly-CSharp
-        m_MethodName: TryAttack
+        m_MethodName: OnReloaded
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -241,6 +241,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   maxNumberOfTargets: 1
+  detectionPerSecond: 30
   onAttack:
     m_PersistentCalls:
       m_Calls:
@@ -273,21 +274,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   stoppingDistance: 2
---- !u!114 &-1851064427253839429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2459247782858418891}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba3d432a1d6ac3f4581b4a15586677f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &-1707411729718412826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,3 +288,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   troopBlueprint: {fileID: 11400000, guid: 8b8fe31c5f4a043429085a8fee0aa1bf, type: 2}
+--- !u!114 &601313972919803799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2459247782858418891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba3d432a1d6ac3f4581b4a15586677f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onValueChanged:
+    m_PersistentCalls:
+      m_Calls: []

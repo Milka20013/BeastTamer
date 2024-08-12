@@ -14,7 +14,11 @@ public class PlayerMovement : MonoBehaviour
     {
         stats = GetComponent<BasicStats>();
         stats.onValueChanged.AddListener(OnStatChange);
+    }
+    private void Start()
+    {
         OnStatChange();
+
     }
     void Update()
     {

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6cac8367fb4142746a2077e9bbe28262
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - dropContainer: {fileID: 11400000, guid: 4b317e314eb8a144db3e4fb3e196de37, type: 2}
+  - inventory: {instanceID: 0}
+  - moneyText: {instanceID: 0}
+  - diamondText: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
