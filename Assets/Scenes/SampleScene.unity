@@ -546,6 +546,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6676639056652328828, guid: 3cdb0be61191dde4a95318bde8e30d90, type: 3}
+      propertyPath: attributeContainer
+      value: 
+      objectReference: {fileID: 11400000, guid: 74065ff1578f60b4fb163c4546efe451, type: 2}
     - target: {fileID: 2459247782858418891, guid: 3cdb0be61191dde4a95318bde8e30d90, type: 3}
       propertyPath: m_Name
       value: Enemy (1)
@@ -615,6 +619,8 @@ GameObject:
   - component: {fileID: 1066483623}
   - component: {fileID: 1066483624}
   - component: {fileID: 1066483625}
+  - component: {fileID: 1066483627}
+  - component: {fileID: 1066483626}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -856,6 +862,96 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventContainer: {fileID: 11400000, guid: 61723e4165dc84c41a777a4639fb7e9c, type: 2}
+--- !u!114 &1066483626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066483614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83d440fcb334208468ab542c1fe49e4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1066483627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066483614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837e4a94e346d354bbecd1f522d4f69c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attributeContainer: {fileID: 11400000, guid: 74065ff1578f60b4fb163c4546efe451, type: 2}
+  onDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1066483626}
+        m_TargetAssemblyTypeName: PlayerDeathManager, Assembly-CSharp
+        m_MethodName: OnDeath
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &1071244160 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2459247782858418891, guid: 3cdb0be61191dde4a95318bde8e30d90, type: 3}
+  m_PrefabInstance: {fileID: 7097761828594335688}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1071244161 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -8488207301959270781, guid: 3cdb0be61191dde4a95318bde8e30d90, type: 3}
+  m_PrefabInstance: {fileID: 7097761828594335688}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071244160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970ce05f57e1bd64496bb4c4fad3c87f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1071244172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071244160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837e4a94e346d354bbecd1f522d4f69c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attributeContainer: {fileID: 11400000, guid: 74065ff1578f60b4fb163c4546efe451, type: 2}
+  onDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1071244161}
+        m_TargetAssemblyTypeName: EnemyDeathManager, Assembly-CSharp
+        m_MethodName: OnDeath
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1605293219
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,11 +1334,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7019801721044022799, guid: 3cdb0be61191dde4a95318bde8e30d90, type: 3}
+      propertyPath: targetLayer.m_Bits
+      value: 320
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -1851064427253839429, guid: 3cdb0be61191dde4a95318bde8e30d90, type: 3}
+    - {fileID: -6676639056652328828, guid: 3cdb0be61191dde4a95318bde8e30d90, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2459247782858418891, guid: 3cdb0be61191dde4a95318bde8e30d90, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1071244172}
   m_SourcePrefab: {fileID: 100100000, guid: 3cdb0be61191dde4a95318bde8e30d90, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

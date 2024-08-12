@@ -22,4 +22,4 @@ MonoBehaviour:
     min: 1
     max: 1
     integerDrop: 1
-    chance: 0.01
+    chance: 1
