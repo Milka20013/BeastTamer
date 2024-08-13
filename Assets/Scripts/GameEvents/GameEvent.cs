@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "GameEvent/Event")]
-public class GameEvent : ScriptableObject
+public class GameEvent : ContainedSO
 {
     private readonly HashSet<GameEventListener> listeners = new();
     [SerializeField] private GameEvent[] eventsToRaiseBefore;

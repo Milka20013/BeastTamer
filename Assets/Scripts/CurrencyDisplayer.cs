@@ -15,7 +15,7 @@ public class CurrencyDisplayer : MonoBehaviour
         inventory.TryGetDropValue(drop, out float amount);
         if (drop == dropContainer.moneyDrop)
         {
-            moneyText.text = Math.Round(amount, 1).ToString();
+            moneyText.text = amount.AsRoundStr();
         }
         if (drop == dropContainer.diamondDrop)
         {
