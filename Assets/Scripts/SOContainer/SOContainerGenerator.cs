@@ -26,7 +26,7 @@ public static class SOContainerGenerator
         StringBuilder content = new(500);
         string className = typeof(T).Name;
         content.Append("\n//This is a generated script. You should not touch it.\n\n");
-        content.Append($"using UnityEngine;\nusing System.Linq;\n[CreateAssetMenu(menuName = \"Container/{className}\",fileName = \"{className}Container\")]\npublic partial class {className}Container : GeneratedContainer\n{{\n");
+        content.Append($"using UnityEngine;\nusing UnityEditor;\nusing System.Linq;\n[CreateAssetMenu(menuName = \"Container/{className}\",fileName = \"{className}Container\")]\npublic partial class {className}Container : GeneratedContainer\n{{\n");
         T[] objects = Resources.LoadAll<T>(contentPath);
         foreach (var obj in objects)
         {
@@ -38,6 +38,7 @@ public static class SOContainerGenerator
         {
             content.Append($"{obj.name.ToPascalCase()} = objects.Where(x=>x.name == \"{obj.name}\").First();\n");
         }
+        content.Append("EditorUtility.SetDirty(this);\n");
         content.Append('}');
         content.Append('}');
 

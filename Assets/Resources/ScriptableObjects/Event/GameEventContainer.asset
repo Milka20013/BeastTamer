@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb3482660f18714e95465aef8925c67, type: 3}
   m_Name: GameEventContainer
   m_EditorClassIdentifier: 
-  onDropGained: {fileID: 0}
+  onDropGained: {fileID: 11400000, guid: c5be16e846fe8d742aea068002d145d1, type: 2}

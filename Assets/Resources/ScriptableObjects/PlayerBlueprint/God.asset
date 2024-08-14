@@ -9,22 +9,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f2d3402523ffef409051070b311e6bb, type: 3}
-  m_Name: Enemy1
+  m_Script: {fileID: 11500000, guid: 2ec11c0bf09817946b5b0e871455f7ba, type: 3}
+  m_Name: God
   m_EditorClassIdentifier: 
-  enemyName: Hexa
-  prefab: {fileID: 2459247782858418891, guid: 3cdb0be61191dde4a95318bde8e30d90, type: 3}
   attributes:
   - attribute: {fileID: 11400000, guid: fa5a7cf257a502d4e9ac9f3f5de3e7d7, type: 2}
-    value: 10
+    value: 999999
   - attribute: {fileID: 11400000, guid: 5229e0e21611a3f488de3556f14f1ac9, type: 2}
-    value: 1
+    value: 999999
   - attribute: {fileID: 11400000, guid: 43a46ac4403a04e4cb6d895147888156, type: 2}
     value: 1
   - attribute: {fileID: 11400000, guid: ef0d0fd3f27341b4db53fcb2d8641043, type: 2}
     value: 3
+  - attribute: {fileID: 11400000, guid: 8b7c6dba3ea53794d9caec7e089a2cca, type: 2}
+    value: 10
   - attribute: {fileID: 11400000, guid: a552d7469aadd464786bf3433cfb1c20, type: 2}
-    value: 2
-  - attribute: {fileID: 11400000, guid: 893b7e23953052a4e90c45f5762ec231, type: 2}
-    value: 5
-  dropTable: {fileID: 11400000, guid: 8c9638101fb7a004eb3587c2b2585c77, type: 2}
+    value: 3

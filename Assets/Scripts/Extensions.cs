@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public static class Extensions
 {
@@ -19,5 +20,10 @@ public static class Extensions
         value = value.ToFirstLower();
         var parts = value.Split();
         return string.Join("", parts);
+    }
+
+    public static void SingletonWarning(this MonoBehaviour scr)
+    {
+        Debug.LogWarning($"Multiple instances of {scr.GetType().Name} was found.");
     }
 }

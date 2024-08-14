@@ -3,7 +3,9 @@ guid: 970ce05f57e1bd64496bb4c4fad3c87f
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - entityContainer: {fileID: 11400000, guid: 7575746763ba7754da4e4b5dcc8d8a23, type: 2}
+  - tameableIndicator: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

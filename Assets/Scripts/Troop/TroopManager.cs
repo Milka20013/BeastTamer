@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TroopSpawner : MonoBehaviour
+public class TroopManager : MonoBehaviour
 {
     [SerializeField] private TroopBlueprint[] troops;
     private Player player;

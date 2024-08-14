@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3353f731e9836ac45a063fd84cbe02c2, type: 3}
   m_Name: EntityContainer
   m_EditorClassIdentifier: 
-  enemies:
-  - {fileID: 11400000, guid: 4281c67d3921947459f7512045b75a56, type: 2}
+  enemies: []
   enemyBpsPath: ScriptableObjects/EnemyBlueprint
   troops:
   - {fileID: 11400000, guid: 8b8fe31c5f4a043429085a8fee0aa1bf, type: 2}
