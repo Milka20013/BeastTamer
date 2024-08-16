@@ -42,7 +42,7 @@ public static class Utilitity
     private static int ClosestsIndexToPoint(Vector3 point, Transform[] points)
     {
         float minDist = float.PositiveInfinity;
-        int index = -1;
+        int index = 0;
         for (int i = 0; i < points.Length; i++)
         {
             if (points[i] == null)
