@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 98b4240b9d34e804f81cf7c8b1b5463b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - stateContainer: {fileID: 11400000, guid: d0d629a849045b44ca351be59b93ab3f, type: 2}
+  - idleAnimation: {instanceID: 0}
+  executionOrder: -50
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

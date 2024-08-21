@@ -240,12 +240,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 955c8888adb602f4cb64f16e507e4459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stateContainer: {fileID: 11400000, guid: d0d629a849045b44ca351be59b93ab3f, type: 2}
   attributeContainer: {fileID: 11400000, guid: 74065ff1578f60b4fb163c4546efe451, type: 2}
   targetLayer:
     serializedVersion: 2
     m_Bits: 128
   maxNumberOfTargets: 5
   detectionPerSecond: 30
+  attackAnimation: {fileID: 0}
+  onTargetDetected:
+    m_PersistentCalls:
+      m_Calls: []
   onAttack:
     m_PersistentCalls:
       m_Calls:
@@ -273,11 +278,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b07a6ce8f5ca6f47bcf19363d3d3ff9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stateContainer: {fileID: 11400000, guid: d0d629a849045b44ca351be59b93ab3f, type: 2}
   attributeContainer: {fileID: 11400000, guid: 74065ff1578f60b4fb163c4546efe451, type: 2}
   onStopped:
     m_PersistentCalls:
       m_Calls: []
   stoppingDistance: 2
+  walkAnimation: {fileID: 0}
 --- !u!114 &-1707411729718412826
 MonoBehaviour:
   m_ObjectHideFlags: 0

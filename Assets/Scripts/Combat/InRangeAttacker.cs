@@ -4,6 +4,7 @@ using UnityEngine.Events;
 
 public class InRangeAttacker : MonoBehaviour
 {
+    [SerializeField] private EntityStateContainer stateContainer;
     [SerializeField] private AttributeContainer attributeContainer;
     private BasicStats stats;
     [SerializeField] private LayerMask targetLayer;
@@ -13,6 +14,8 @@ public class InRangeAttacker : MonoBehaviour
     private bool readyToAttack = false;
     private Collider2D target;
     [SerializeField] private float detectionPerSecond = 30f;
+    private EntityStateMachine stateMachine;
+    [SerializeField] private AnimationClip attackAnimation;
     public UnityEvent onAttack;
 
 
@@ -20,6 +23,10 @@ public class InRangeAttacker : MonoBehaviour
     {
         stats = GetComponent<BasicStats>();
         stats.onValueChanged.AddListener(OnStatChanged);
+        if (TryGetComponent(out IStateMachineHandler<EnemyStateMachine> stateHandler))
+        {
+            stateMachine = stateHandler.GetStateMachine();
+        }
     }
 
     private void Start()
@@ -39,7 +46,17 @@ public class InRangeAttacker : MonoBehaviour
         {
             return;
         }
-        Attack();
+        if (stateMachine == null)
+        {
+            AttackTarget();
+            return;
+        }
+        stateMachine.RequestStateChange(stateContainer.attack);
+        if (!stateMachine.RequestAnimation(attackAnimation, stateContainer.attack))
+        {
+            AttackTarget();
+            return;
+        }
     }
 
     IEnumerator DetectTargetInRange()
@@ -48,20 +65,31 @@ public class InRangeAttacker : MonoBehaviour
         {
             Collider2D[] colliders = new Collider2D[maxNumberOfTargets];
             int size = Physics2D.OverlapCircleNonAlloc(transform.position, attackRange, colliders, targetLayer);
-            if (size != 0)
+            target = Utilitity.ClosestToPoint(transform.position, colliders);
+            if (target == null)
             {
-                target = Utilitity.ClosestToPoint(transform.position, colliders);
-                TryAttack();
+                stateMachine?.ReleaseState(stateContainer.attack);
             }
+            TryAttack();
             yield return new WaitForSeconds(1 / detectionPerSecond);
         }
     }
-    public void Attack()
+    public void OnDoAttack()
     {
+        AttackTarget();
+    }
+    public void AttackTarget()
+    {
+        if (target == null)
+        {
+            return;
+        }
+        onAttack.Invoke();
         if (target.TryGetComponent(out IDamageable damageable))
         {
             damageable.RegisterDamage(damage, gameObject);
         }
+        readyToAttack = false;
         //to-do: implement for more targets
         /*for (int i = 0; i < size; i++)
         {
@@ -70,8 +98,6 @@ public class InRangeAttacker : MonoBehaviour
                 damageable.RegisterDamage(damage);
             }
         }*/
-        readyToAttack = false;
-        onAttack.Invoke();
     }
 
     public void OnStatChanged()

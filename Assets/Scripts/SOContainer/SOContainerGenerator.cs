@@ -4,6 +4,7 @@ using UnityEditor;
 using UnityEngine;
 public static class SOContainerGenerator
 {
+#if UNITY_EDITOR
     private static string GetFolderPath(bool wholePath = false)
     {
         var g = AssetDatabase.FindAssets($"t:Script {nameof(SOContainerGenerator)}");
@@ -32,6 +33,7 @@ public static class SOContainerGenerator
         {
             content.Append($"public {className} {obj.name.ToPascalCase()};\n");
         }
+        content.Append("#if UNITY_EDITOR\n");
         content.Append("public override void FindReferences()\n{");
         content.Append($"{className}[] objects = Resources.LoadAll<{className}>(\"{contentPath}\");\n");
         foreach (var obj in objects)
@@ -39,7 +41,8 @@ public static class SOContainerGenerator
             content.Append($"{obj.name.ToPascalCase()} = objects.Where(x=>x.name == \"{obj.name}\").First();\n");
         }
         content.Append("EditorUtility.SetDirty(this);\n");
-        content.Append('}');
+        content.Append("}\n");
+        content.Append("#endif\n");
         content.Append('}');
 
         string folderPath = GetFolderPath();
@@ -61,4 +64,5 @@ public static class SOContainerGenerator
             Debug.LogError(content.ToString());
         }
     }
+#endif
 }

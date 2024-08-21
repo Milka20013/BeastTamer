@@ -8,8 +8,11 @@ using System.Linq;
 public partial class GameEventContainer : GeneratedContainer
 {
 public GameEvent onDropGained;
+#if UNITY_EDITOR
 public override void FindReferences()
 {GameEvent[] objects = Resources.LoadAll<GameEvent>("ScriptableObjects/Event");
 onDropGained = objects.Where(x=>x.name == "OnDropGained").First();
 EditorUtility.SetDirty(this);
-}}
+}
+#endif
+}

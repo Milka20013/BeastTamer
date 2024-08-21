@@ -9,9 +9,12 @@ public partial class DropContainer : GeneratedContainer
 {
 public Drop diamondDrop;
 public Drop moneyDrop;
+#if UNITY_EDITOR
 public override void FindReferences()
 {Drop[] objects = Resources.LoadAll<Drop>("ScriptableObjects/Drop");
 diamondDrop = objects.Where(x=>x.name == "DiamondDrop").First();
 moneyDrop = objects.Where(x=>x.name == "MoneyDrop").First();
 EditorUtility.SetDirty(this);
-}}
+}
+#endif
+}

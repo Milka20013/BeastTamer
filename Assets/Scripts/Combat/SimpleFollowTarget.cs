@@ -3,6 +3,7 @@ using UnityEngine.Events;
 
 public class SimpleFollowTarget : MonoBehaviour
 {
+    [SerializeField] private EntityStateContainer stateContainer;
     [SerializeField] private AttributeContainer attributeContainer;
     private BasicStats stats;
     public UnityEvent onStopped;
@@ -10,11 +11,17 @@ public class SimpleFollowTarget : MonoBehaviour
     private float movementSpeed;
     private Transform target;
     private bool isStopped = false;
+    private EntityStateMachine stateMachine = null;
+    [SerializeField] private AnimationClip walkAnimation;
 
     private void Awake()
     {
         stats = GetComponent<BasicStats>();
         stats.onValueChanged.AddListener(OnStatChanged);
+        if (TryGetComponent(out IStateMachineHandler<EnemyStateMachine> machineHandler))
+        {
+            stateMachine = machineHandler.GetStateMachine();
+        }
     }
 
     private void Start()
@@ -25,6 +32,7 @@ public class SimpleFollowTarget : MonoBehaviour
     {
         if (target == null)
         {
+            stateMachine?.ReleaseState(stateContainer.chase);
             return;
         }
         if (Vector3.Distance(transform.position, target.position) <= stoppingDistance)
@@ -34,8 +42,11 @@ public class SimpleFollowTarget : MonoBehaviour
                 isStopped = true;
                 onStopped.Invoke();
             }
+            stateMachine?.ReleaseState(stateContainer.chase);
             return;
         }
+        stateMachine?.RequestStateChange(stateContainer.chase);
+        stateMachine?.RequestAnimation(walkAnimation, stateContainer.chase);
         Vector3 direction = target.position - transform.position;
         transform.Translate(movementSpeed * Time.deltaTime * direction.normalized);
     }

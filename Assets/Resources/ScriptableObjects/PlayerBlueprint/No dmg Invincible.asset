@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ec11c0bf09817946b5b0e871455f7ba, type: 3}
+  m_Name: No dmg Invincible
+  m_EditorClassIdentifier: 
+  attributes:
+  - attribute: {fileID: 11400000, guid: fa5a7cf257a502d4e9ac9f3f5de3e7d7, type: 2}
+    value: 9999999
+  - attribute: {fileID: 11400000, guid: 5229e0e21611a3f488de3556f14f1ac9, type: 2}
+    value: 0
+  - attribute: {fileID: 11400000, guid: 43a46ac4403a04e4cb6d895147888156, type: 2}
+    value: 1
+  - attribute: {fileID: 11400000, guid: ef0d0fd3f27341b4db53fcb2d8641043, type: 2}
+    value: 3
+  - attribute: {fileID: 11400000, guid: 8b7c6dba3ea53794d9caec7e089a2cca, type: 2}
+    value: 10
+  - attribute: {fileID: 11400000, guid: a552d7469aadd464786bf3433cfb1c20, type: 2}
+    value: 3

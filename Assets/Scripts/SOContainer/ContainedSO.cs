@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class ContainedSO : ScriptableObject
 {
+#if UNITY_EDITOR
     protected string GetFolderPath(bool wholePath = false)
     {
         var g = AssetDatabase.FindAssets($"t:Script {nameof(SOContainerGenerator)}");
@@ -24,4 +25,5 @@ public abstract class ContainedSO : ScriptableObject
     {
         SOContainerGenerator.CreateScript<T>(contentPath);
     }
+#endif
 }

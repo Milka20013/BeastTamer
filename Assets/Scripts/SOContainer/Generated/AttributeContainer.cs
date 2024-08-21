@@ -15,6 +15,7 @@ public Attribute health;
 public Attribute movementSpeed;
 public Attribute range;
 public Attribute stoppingDistance;
+#if UNITY_EDITOR
 public override void FindReferences()
 {Attribute[] objects = Resources.LoadAll<Attribute>("ScriptableObjects/Attribute");
 attackRange = objects.Where(x=>x.name == "AttackRange").First();
@@ -26,4 +27,6 @@ movementSpeed = objects.Where(x=>x.name == "MovementSpeed").First();
 range = objects.Where(x=>x.name == "Range").First();
 stoppingDistance = objects.Where(x=>x.name == "StoppingDistance").First();
 EditorUtility.SetDirty(this);
-}}
+}
+#endif
+}
