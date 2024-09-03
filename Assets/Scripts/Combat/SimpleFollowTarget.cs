@@ -7,9 +7,10 @@ public class SimpleFollowTarget : MonoBehaviour
     [SerializeField] private AttributeContainer attributeContainer;
     private BasicStats stats;
     public UnityEvent onStopped;
-    [SerializeField] private float stoppingDistance;
+    [SerializeField] private float stoppingDistance = 0.5f;
     private float movementSpeed;
-    private Transform target;
+    private Collider2D targetCollider;
+    private Vector2 targetPosition;
     private bool isStopped = false;
     private EntityStateMachine stateMachine = null;
     [SerializeField] private AnimationClip walkAnimation;
@@ -30,12 +31,12 @@ public class SimpleFollowTarget : MonoBehaviour
     }
     void Update()
     {
-        if (target == null)
+        if (targetCollider == null)
         {
             stateMachine?.ReleaseState(stateContainer.chase);
             return;
         }
-        if (Vector3.Distance(transform.position, target.position) <= stoppingDistance)
+        if (Vector3.Distance(transform.position, targetPosition) <= stoppingDistance)
         {
             if (!isStopped)
             {
@@ -47,13 +48,18 @@ public class SimpleFollowTarget : MonoBehaviour
         }
         stateMachine?.RequestStateChange(stateContainer.chase);
         stateMachine?.RequestAnimation(walkAnimation, stateContainer.chase);
-        Vector3 direction = target.position - transform.position;
+        Vector3 direction = new Vector3(targetPosition.x, targetPosition.y) - transform.position;
         transform.Translate(movementSpeed * Time.deltaTime * direction.normalized);
     }
 
-    public void OnTargetDetected(Transform target)
+    public void OnTargetDetected(Collider2D target)
     {
-        this.target = target;
+        targetCollider = target;
+        if (target == null)
+        {
+            return;
+        }
+        targetPosition = targetCollider.ClosestPoint(transform.position);
     }
 
     public void OnStatChanged()

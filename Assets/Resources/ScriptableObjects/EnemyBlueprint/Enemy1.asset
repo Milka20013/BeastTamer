@@ -22,7 +22,7 @@ MonoBehaviour:
   - attribute: {fileID: 11400000, guid: 43a46ac4403a04e4cb6d895147888156, type: 2}
     value: 1
   - attribute: {fileID: 11400000, guid: ef0d0fd3f27341b4db53fcb2d8641043, type: 2}
-    value: 2
+    value: 1
   - attribute: {fileID: 11400000, guid: a552d7469aadd464786bf3433cfb1c20, type: 2}
     value: 2
   - attribute: {fileID: 11400000, guid: 893b7e23953052a4e90c45f5762ec231, type: 2}

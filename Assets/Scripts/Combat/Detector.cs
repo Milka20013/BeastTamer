@@ -10,7 +10,7 @@ public class Detector : MonoBehaviour
     private float _detectionDelay;
     private BasicStats stats;
     private float detectionRadius;
-    public UnityEvent<Transform> onTargetDetected;
+    public UnityEvent<Collider2D> onTargetDetected;
 
     private void Awake()
     {
@@ -43,13 +43,13 @@ public class Detector : MonoBehaviour
             }
             else
             {
-                OnTargetDetected(Utilitity.ClosestToPoint(transform.position, colliders).transform);
+                OnTargetDetected(Utilitity.ClosestToPoint(transform.position, colliders));
             }
             yield return new WaitForSeconds(_detectionDelay);
         }
     }
 
-    public virtual void OnTargetDetected(Transform target)
+    public virtual void OnTargetDetected(Collider2D target)
     {
         onTargetDetected.Invoke(target);
     }

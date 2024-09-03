@@ -9,11 +9,11 @@ public class TroopDetector : Detector
         playerMovement = GetComponent<Troop>().player.GetComponent<PlayerMovement>();
         base.Init();
     }
-    public override void OnTargetDetected(Transform target)
+    public override void OnTargetDetected(Collider2D target)
     {
         if (playerMovement.isMoving)
         {
-            onTargetDetected.Invoke(playerMovement.transform);
+            onTargetDetected.Invoke(playerMovement.GetComponent<Collider2D>());
         }
         else
         {
